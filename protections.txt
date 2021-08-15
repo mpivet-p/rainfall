@@ -1,0 +1,35 @@
+GCC stack protector:
+
+Strict user copy checks:
+
+Restrict /dev/mem access:
+
+Restrict /dev/kmem access:
+
+grsecurity / PaX: (GRKERNSEC)
+
+Kernel Hap Hardening: (KERNHEAP)
+
+System-wide ASLR (kernel.randomize_va_space):
+ASLR randomly arranges the address space positions of key data areas of a process,
+including the base of the executable and the positions of the stack, heap and libraries.
+Address space randomization hinders some types of security attacks by making it more difficult
+for an attacker to predict target addresses. For example, attackers trying
+to execute return-to-libc attacks must locate the code to be executed, while other attackers
+trying to execute shellcode injected on the stack have to find the stack first.
+In both cases, the system obscures related memory-addresses from the attackers. These values
+have to be guessed, and a mistaken guess is not usually recoverable due to the application crashing.
+
+RELRO: (RELocation Read Only)
+
+STACK CANARY:
+
+NX:
+
+PIE:
+
+RPATH:
+
+RUNPATH:
+
+FILE:

