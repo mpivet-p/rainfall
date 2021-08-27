@@ -1,15 +1,16 @@
 #include <unistd.h>
 #include <string.h>
-//#include <stdlib.h>
 
 class N {
 
 private:
-	char	_annotation[100];
 	int		_number;
+	char	_annotation[100];
 
 public:
-	N(int n) : _number(n) {} ;
+	N(int n) {
+		_number = n;
+	};
 
 	void setAnnotation(char *str) {
 		memcpy(_annotation, str, strlen(str));
