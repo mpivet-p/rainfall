@@ -1,3 +1,6 @@
+#include <stdlib.h>
+#include <stdio.h>
+
 int m;
 
 void o(void)

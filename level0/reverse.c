@@ -1,7 +1,12 @@
-int     main(int argc, char **argv, char **envp)
+#include <string.h>
+#include <stdlib.h>
+#include <unistd.h>
+
+int     main(int argc, char **argv)
 {
 	uid_t	uid;
 	gid_t	gid;
+	char	*ptr;
 
     if (atoi(argv[1]) == 423)
     {
@@ -10,11 +15,11 @@ int     main(int argc, char **argv, char **envp)
         uid = geteuid();
         setresgid(gid);
         setresuid(uid);
-		execv(ptr, "/bin/sh");
+		execv("/bin/sh", &ptr);
     }
     else
     {
         write(1, "No !\n", 5);
     }
-    return (0)
+    return (0);
 }

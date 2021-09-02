@@ -1,15 +1,15 @@
-# When we are lauching the program it segfaults
-# strace, nm and ltrace aren't working so I opened the binary with gdb
+When we are lauching the program it segfaults
+strace, nm and ltrace aren't working so I opened the binary with gdb
 
 
 ./gdb -q level0
 
-# we can see that we only have the main and no other functions
-# when reversing the main we see it takes atoi's return of argv[i] and compare the result with 423
-# then it runs a shell with level1 uid
+we can see that we only have the main and no other functions
+when reverse engineering the main we see it takes atoi's return of argv[1] and compares the result with 423
+then it runs a shell with level1 uid
 
 ./level0 423
-$ pwd
-/home/user/level0
+$ whoami
+level1
 $ cat /home/user/level1/.pass
 1fe8a524fa4bec01ca4ea2a869af2a02260d4a7d5fe7e7c24d8617e6dca12d3a
