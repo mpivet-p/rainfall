@@ -1,0 +1,128 @@
+Dump of assembler code for function greetuser:
+<+0>:	push   ebp
+<+1>:	mov    ebp,esp
+<+3>:	sub    esp,0x58
+<+6>:	mov    eax,ds:0x8049988
+<+11>:	cmp    eax,0x1
+<+14>:	je     0x80484ba <greetuser+54>
+<+16>:	cmp    eax,0x2
+<+19>:	je     0x80484e9 <greetuser+101>
+<+21>:	test   eax,eax
+<+23>:	jne    0x804850a <greetuser+134>
+<+25>:	mov    edx,0x8048710
+<+30>:	lea    eax,[ebp-0x48]
+<+33>:	mov    ecx,DWORD PTR [edx]
+<+35>:	mov    DWORD PTR [eax],ecx
+<+37>:	movzx  ecx,WORD PTR [edx+0x4]
+<+41>:	mov    WORD PTR [eax+0x4],cx
+<+45>:	movzx  edx,BYTE PTR [edx+0x6]
+<+49>:	mov    BYTE PTR [eax+0x6],dl
+<+52>:	jmp    0x804850a <greetuser+134>
+<+54>:	mov    edx,0x8048717
+<+59>:	lea    eax,[ebp-0x48]
+<+62>:	mov    ecx,DWORD PTR [edx]
+<+64>:	mov    DWORD PTR [eax],ecx
+<+66>:	mov    ecx,DWORD PTR [edx+0x4]
+<+69>:	mov    DWORD PTR [eax+0x4],ecx
+<+72>:	mov    ecx,DWORD PTR [edx+0x8]
+<+75>:	mov    DWORD PTR [eax+0x8],ecx
+<+78>:	mov    ecx,DWORD PTR [edx+0xc]
+<+81>:	mov    DWORD PTR [eax+0xc],ecx
+<+84>:	movzx  ecx,WORD PTR [edx+0x10]
+<+88>:	mov    WORD PTR [eax+0x10],cx
+<+92>:	movzx  edx,BYTE PTR [edx+0x12]
+<+96>:	mov    BYTE PTR [eax+0x12],dl
+<+99>:	jmp    0x804850a <greetuser+134>
+<+101>:	mov    edx,0x804872a
+<+106>:	lea    eax,[ebp-0x48]
+<+109>:	mov    ecx,DWORD PTR [edx]
+<+111>:	mov    DWORD PTR [eax],ecx
+<+113>:	mov    ecx,DWORD PTR [edx+0x4]
+<+116>:	mov    DWORD PTR [eax+0x4],ecx
+<+119>:	mov    ecx,DWORD PTR [edx+0x8]
+<+122>:	mov    DWORD PTR [eax+0x8],ecx
+<+125>:	movzx  edx,WORD PTR [edx+0xc]
+<+129>:	mov    WORD PTR [eax+0xc],dx
+<+133>:	nop
+<+134>:	lea    eax,[ebp+0x8]
+<+137>:	mov    DWORD PTR [esp+0x4],eax
+<+141>:	lea    eax,[ebp-0x48]
+<+144>:	mov    DWORD PTR [esp],eax
+<+147>:	call   0x8048370 <strcat@plt>
+<+152>:	lea    eax,[ebp-0x48]
+<+155>:	mov    DWORD PTR [esp],eax
+<+158>:	call   0x8048390 <puts@plt>
+<+163>:	leave
+<+164>:	ret
+
+Dump of assembler code for function main:
+<+0>:	push   ebp
+<+1>:	mov    ebp,esp
+<+3>:	push   edi
+<+4>:	push   esi
+<+5>:	push   ebx
+<+6>:	and    esp,0xfffffff0
+<+9>:	sub    esp,0xa0
+<+15>:	cmp    DWORD PTR [ebp+0x8],0x3
+<+19>:	je     0x8048548 <main+31>
+<+21>:	mov    eax,0x1
+<+26>:	jmp    0x8048630 <main+263>
+<+31>:	lea    ebx,[esp+0x50]
+<+35>:	mov    eax,0x0
+<+40>:	mov    edx,0x13
+<+45>:	mov    edi,ebx
+<+47>:	mov    ecx,edx
+<+49>:	rep stos DWORD PTR es:[edi],eax
+<+51>:	mov    eax,DWORD PTR [ebp+0xc]
+<+54>:	add    eax,0x4
+<+57>:	mov    eax,DWORD PTR [eax]
+<+59>:	mov    DWORD PTR [esp+0x8],0x28
+<+67>:	mov    DWORD PTR [esp+0x4],eax
+<+71>:	lea    eax,[esp+0x50]
+<+75>:	mov    DWORD PTR [esp],eax
+<+78>:	call   0x80483c0 <strncpy@plt>
+<+83>:	mov    eax,DWORD PTR [ebp+0xc]
+<+86>:	add    eax,0x8
+<+89>:	mov    eax,DWORD PTR [eax]
+<+91>:	mov    DWORD PTR [esp+0x8],0x20
+<+99>:	mov    DWORD PTR [esp+0x4],eax
+<+103>:	lea    eax,[esp+0x50]
+<+107>:	add    eax,0x28
+<+110>:	mov    DWORD PTR [esp],eax
+<+113>:	call   0x80483c0 <strncpy@plt>
+<+118>:	mov    DWORD PTR [esp],0x8048738
+<+125>:	call   0x8048380 <getenv@plt>
+<+130>:	mov    DWORD PTR [esp+0x9c],eax
+<+137>:	cmp    DWORD PTR [esp+0x9c],0x0
+<+145>:	je     0x8048618 <main+239>
+<+147>:	mov    DWORD PTR [esp+0x8],0x2
+<+155>:	mov    DWORD PTR [esp+0x4],0x804873d
+<+163>:	mov    eax,DWORD PTR [esp+0x9c]
+<+170>:	mov    DWORD PTR [esp],eax
+<+173>:	call   0x8048360 <memcmp@plt>
+<+178>:	test   eax,eax
+<+180>:	jne    0x80485eb <main+194>
+<+182>:	mov    DWORD PTR ds:0x8049988,0x1
+<+192>:	jmp    0x8048618 <main+239>
+<+194>:	mov    DWORD PTR [esp+0x8],0x2
+<+202>:	mov    DWORD PTR [esp+0x4],0x8048740
+<+210>:	mov    eax,DWORD PTR [esp+0x9c]
+<+217>:	mov    DWORD PTR [esp],eax
+<+220>:	call   0x8048360 <memcmp@plt>
+<+225>:	test   eax,eax
+<+227>:	jne    0x8048618 <main+239>
+<+229>:	mov    DWORD PTR ds:0x8049988,0x2
+<+239>:	mov    edx,esp
+<+241>:	lea    ebx,[esp+0x50]
+<+245>:	mov    eax,0x13
+<+250>:	mov    edi,edx
+<+252>:	mov    esi,ebx
+<+254>:	mov    ecx,eax
+<+256>:	rep movs DWORD PTR es:[edi],DWORD PTR ds:[esi]
+<+258>:	call   0x8048484 <greetuser>
+<+263>:	lea    esp,[ebp-0xc]
+<+266>:	pop    ebx
+<+267>:	pop    esi
+<+268>:	pop    edi
+<+269>:	pop    ebp
+<+270>:	ret

@@ -1,0 +1,39 @@
+Dump of assembler code for function p:
+<+0>:	push   ebp
+<+1>:	mov    ebp,esp
+<+3>:	sub    esp,0x68
+<+6>:	mov    eax,ds:0x8049860
+<+11>:	mov    DWORD PTR [esp],eax
+<+14>:	call   0x80483b0 <fflush@plt>
+<+19>:	lea    eax,[ebp-0x4c]
+<+22>:	mov    DWORD PTR [esp],eax
+<+25>:	call   0x80483c0 <gets@plt>
+<+30>:	mov    eax,DWORD PTR [ebp+0x4]
+<+33>:	mov    DWORD PTR [ebp-0xc],eax
+<+36>:	mov    eax,DWORD PTR [ebp-0xc]
+<+39>:	and    eax,0xb0000000
+<+44>:	cmp    eax,0xb0000000
+<+49>:	jne    0x8048527 <p+83>
+<+51>:	mov    eax,0x8048620
+<+56>:	mov    edx,DWORD PTR [ebp-0xc]
+<+59>:	mov    DWORD PTR [esp+0x4],edx
+<+63>:	mov    DWORD PTR [esp],eax
+<+66>:	call   0x80483a0 <printf@plt>
+<+71>:	mov    DWORD PTR [esp],0x1
+<+78>:	call   0x80483d0 <_exit@plt>
+<+83>:	lea    eax,[ebp-0x4c]
+<+86>:	mov    DWORD PTR [esp],eax
+<+89>:	call   0x80483f0 <puts@plt>
+<+94>:	lea    eax,[ebp-0x4c]
+<+97>:	mov    DWORD PTR [esp],eax
+<+100>:	call   0x80483e0 <strdup@plt>
+<+105>:	leave
+<+106>:	ret
+
+Dump of assembler code for function main:
+<+0>:	push   ebp
+<+1>:	mov    ebp,esp
+<+3>:	and    esp,0xfffffff0
+<+6>:	call   0x80484d4 <p>
+<+11>:	leave
+<+12>:	ret

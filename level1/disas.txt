@@ -1,0 +1,27 @@
+Dump of assembler code for function run:
+<+0>:	push   ebp
+<+1>:	mov    ebp,esp
+<+3>:	sub    esp,0x18
+<+6>:	mov    eax,ds:0x80497c0
+<+11>:	mov    edx,eax
+<+13>:	mov    eax,0x8048570
+<+18>:	mov    DWORD PTR [esp+0xc],edx
+<+22>:	mov    DWORD PTR [esp+0x8],0x13
+<+30>:	mov    DWORD PTR [esp+0x4],0x1
+<+38>:	mov    DWORD PTR [esp],eax
+<+41>:	call   0x8048350 <fwrite@plt>
+<+46>:	mov    DWORD PTR [esp],0x8048584
+<+53>:	call   0x8048360 <system@plt>
+<+58>:	leave
+<+59>:	ret
+
+Dump of assembler code for function main:
+<+0>:	push   ebp
+<+1>:	mov    ebp,esp
+<+3>:	and    esp,0xfffffff0
+<+6>:	sub    esp,0x50
+<+9>:	lea    eax,[esp+0x10]
+<+13>:	mov    DWORD PTR [esp],eax
+<+16>:	call   0x8048340 <gets@plt>
+<+21>:	leave
+<+22>:	ret

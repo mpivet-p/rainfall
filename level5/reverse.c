@@ -6,7 +6,7 @@ int m;
 void o(void)
 {
 	system("/bin/sh");
-	exit(1);
+	_exit(1);
 }
 
 void n(void)

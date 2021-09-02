@@ -1,0 +1,139 @@
+Dump of assembler code for function main:
+<+0>:	push   ebp
+<+1>:	mov    ebp,esp
+<+3>:	push   edi
+<+4>:	push   esi
+<+5>:	and    esp,0xfffffff0
+<+8>:	sub    esp,0xa0
+<+14>:	jmp    0x8048575 <main+17>
+<+16>:	nop
+<+17>:	mov    ecx,DWORD PTR ds:0x8049ab0
+<+23>:	mov    edx,DWORD PTR ds:0x8049aac
+<+29>:	mov    eax,0x8048810
+<+34>:	mov    DWORD PTR [esp+0x8],ecx
+<+38>:	mov    DWORD PTR [esp+0x4],edx
+<+42>:	mov    DWORD PTR [esp],eax
+<+45>:	call   0x8048410 <printf@plt>
+<+50>:	mov    eax,ds:0x8049a80
+<+55>:	mov    DWORD PTR [esp+0x8],eax
+<+59>:	mov    DWORD PTR [esp+0x4],0x80
+<+67>:	lea    eax,[esp+0x20]
+<+71>:	mov    DWORD PTR [esp],eax
+<+74>:	call   0x8048440 <fgets@plt>
+<+79>:	test   eax,eax
+<+81>:	je     0x804872c <main+456>
+<+87>:	lea    eax,[esp+0x20]
+<+91>:	mov    edx,eax
+<+93>:	mov    eax,0x8048819
+<+98>:	mov    ecx,0x5
+<+103>:	mov    esi,edx
+<+105>:	mov    edi,eax
+<+107>:	repz cmps BYTE PTR ds:[esi],BYTE PTR es:[edi]
+<+109>:	seta   dl
+<+112>:	setb   al
+<+115>:	mov    ecx,edx
+<+117>:	sub    cl,al
+<+119>:	mov    eax,ecx
+<+121>:	movsx  eax,al
+<+124>:	test   eax,eax
+<+126>:	jne    0x8048642 <main+222>
+<+128>:	mov    DWORD PTR [esp],0x4
+<+135>:	call   0x8048470 <malloc@plt>
+<+140>:	mov    ds:0x8049aac,eax
+<+145>:	mov    eax,ds:0x8049aac
+<+150>:	mov    DWORD PTR [eax],0x0
+<+156>:	lea    eax,[esp+0x20]
+<+160>:	add    eax,0x5
+<+163>:	mov    DWORD PTR [esp+0x1c],0xffffffff
+<+171>:	mov    edx,eax
+<+173>:	mov    eax,0x0
+<+178>:	mov    ecx,DWORD PTR [esp+0x1c]
+<+182>:	mov    edi,edx
+<+184>:	repnz scas al,BYTE PTR es:[edi]
+<+186>:	mov    eax,ecx
+<+188>:	not    eax
+<+190>:	sub    eax,0x1
+<+193>:	cmp    eax,0x1e
+<+196>:	ja     0x8048642 <main+222>
+<+198>:	lea    eax,[esp+0x20]
+<+202>:	lea    edx,[eax+0x5]
+<+205>:	mov    eax,ds:0x8049aac
+<+210>:	mov    DWORD PTR [esp+0x4],edx
+<+214>:	mov    DWORD PTR [esp],eax
+<+217>:	call   0x8048460 <strcpy@plt>
+<+222>:	lea    eax,[esp+0x20]
+<+226>:	mov    edx,eax
+<+228>:	mov    eax,0x804881f
+<+233>:	mov    ecx,0x5
+<+238>:	mov    esi,edx
+<+240>:	mov    edi,eax
+<+242>:	repz cmps BYTE PTR ds:[esi],BYTE PTR es:[edi]
+<+244>:	seta   dl
+<+247>:	setb   al
+<+250>:	mov    ecx,edx
+<+252>:	sub    cl,al
+<+254>:	mov    eax,ecx
+<+256>:	movsx  eax,al
+<+259>:	test   eax,eax
+<+261>:	jne    0x8048678 <main+276>
+<+263>:	mov    eax,ds:0x8049aac
+<+268>:	mov    DWORD PTR [esp],eax
+<+271>:	call   0x8048420 <free@plt>
+<+276>:	lea    eax,[esp+0x20]
+<+280>:	mov    edx,eax
+<+282>:	mov    eax,0x8048825
+<+287>:	mov    ecx,0x6
+<+292>:	mov    esi,edx
+<+294>:	mov    edi,eax
+<+296>:	repz cmps BYTE PTR ds:[esi],BYTE PTR es:[edi]
+<+298>:	seta   dl
+<+301>:	setb   al
+<+304>:	mov    ecx,edx
+<+306>:	sub    cl,al
+<+308>:	mov    eax,ecx
+<+310>:	movsx  eax,al
+<+313>:	test   eax,eax
+<+315>:	jne    0x80486b5 <main+337>
+<+317>:	lea    eax,[esp+0x20]
+<+321>:	add    eax,0x7
+<+324>:	mov    DWORD PTR [esp],eax
+<+327>:	call   0x8048430 <strdup@plt>
+<+332>:	mov    ds:0x8049ab0,eax
+<+337>:	lea    eax,[esp+0x20]
+<+341>:	mov    edx,eax
+<+343>:	mov    eax,0x804882d
+<+348>:	mov    ecx,0x5
+<+353>:	mov    esi,edx
+<+355>:	mov    edi,eax
+<+357>:	repz cmps BYTE PTR ds:[esi],BYTE PTR es:[edi]
+<+359>:	seta   dl
+<+362>:	setb   al
+<+365>:	mov    ecx,edx
+<+367>:	sub    cl,al
+<+369>:	mov    eax,ecx
+<+371>:	movsx  eax,al
+<+374>:	test   eax,eax
+<+376>:	jne    0x8048574 <main+16>
+<+382>:	mov    eax,ds:0x8049aac
+<+387>:	mov    eax,DWORD PTR [eax+0x20]
+<+390>:	test   eax,eax
+<+392>:	je     0x80486ff <main+411>
+<+394>:	mov    DWORD PTR [esp],0x8048833
+<+401>:	call   0x8048480 <system@plt>
+<+406>:	jmp    0x8048574 <main+16>
+<+411>:	mov    eax,ds:0x8049aa0
+<+416>:	mov    edx,eax
+<+418>:	mov    eax,0x804883b
+<+423>:	mov    DWORD PTR [esp+0xc],edx
+<+427>:	mov    DWORD PTR [esp+0x8],0xa
+<+435>:	mov    DWORD PTR [esp+0x4],0x1
+<+443>:	mov    DWORD PTR [esp],eax
+<+446>:	call   0x8048450 <fwrite@plt>
+<+451>:	jmp    0x8048574 <main+16>
+<+456>:	nop
+<+457>:	mov    eax,0x0
+<+462>:	lea    esp,[ebp-0x8]
+<+465>:	pop    esi
+<+466>:	pop    edi
+<+467>:	pop    ebp
+<+468>:	ret

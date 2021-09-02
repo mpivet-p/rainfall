@@ -1,0 +1,74 @@
+Dump of assembler code for function main:
+<+0>:	push   ebp
+<+1>:	mov    ebp,esp
+<+3>:	push   edi
+<+4>:	push   ebx
+<+5>:	and    esp,0xfffffff0
+<+8>:	sub    esp,0xa0
+<+14>:	mov    edx,0x80486f0
+<+19>:	mov    eax,0x80486f2
+<+24>:	mov    DWORD PTR [esp+0x4],edx
+<+28>:	mov    DWORD PTR [esp],eax
+<+31>:	call   0x8048410 <fopen@plt>
+<+36>:	mov    DWORD PTR [esp+0x9c],eax
+<+43>:	lea    ebx,[esp+0x18]
+<+47>:	mov    eax,0x0
+<+52>:	mov    edx,0x21
+<+57>:	mov    edi,ebx
+<+59>:	mov    ecx,edx
+<+61>:	rep stos DWORD PTR es:[edi],eax
+<+63>:	cmp    DWORD PTR [esp+0x9c],0x0
+<+71>:	je     0x8048543 <main+79>
+<+73>:	cmp    DWORD PTR [ebp+0x8],0x2
+<+77>:	je     0x804854d <main+89>
+<+79>:	mov    eax,0xffffffff
+<+84>:	jmp    0x8048615 <main+289>
+<+89>:	lea    eax,[esp+0x18]
+<+93>:	mov    edx,DWORD PTR [esp+0x9c]
+<+100>:	mov    DWORD PTR [esp+0xc],edx
+<+104>:	mov    DWORD PTR [esp+0x8],0x42
+<+112>:	mov    DWORD PTR [esp+0x4],0x1
+<+120>:	mov    DWORD PTR [esp],eax
+<+123>:	call   0x80483d0 <fread@plt>
+<+128>:	mov    BYTE PTR [esp+0x59],0x0
+<+133>:	mov    eax,DWORD PTR [ebp+0xc]
+<+136>:	add    eax,0x4
+<+139>:	mov    eax,DWORD PTR [eax]
+<+141>:	mov    DWORD PTR [esp],eax
+<+144>:	call   0x8048430 <atoi@plt>
+<+149>:	mov    BYTE PTR [esp+eax*1+0x18],0x0
+<+154>:	lea    eax,[esp+0x18]
+<+158>:	lea    edx,[eax+0x42]
+<+161>:	mov    eax,DWORD PTR [esp+0x9c]
+<+168>:	mov    DWORD PTR [esp+0xc],eax
+<+172>:	mov    DWORD PTR [esp+0x8],0x41
+<+180>:	mov    DWORD PTR [esp+0x4],0x1
+<+188>:	mov    DWORD PTR [esp],edx
+<+191>:	call   0x80483d0 <fread@plt>
+<+196>:	mov    eax,DWORD PTR [esp+0x9c]
+<+203>:	mov    DWORD PTR [esp],eax
+<+206>:	call   0x80483c0 <fclose@plt>
+<+211>:	mov    eax,DWORD PTR [ebp+0xc]
+<+214>:	add    eax,0x4
+<+217>:	mov    eax,DWORD PTR [eax]
+<+219>:	mov    DWORD PTR [esp+0x4],eax
+<+223>:	lea    eax,[esp+0x18]
+<+227>:	mov    DWORD PTR [esp],eax
+<+230>:	call   0x80483b0 <strcmp@plt>
+<+235>:	test   eax,eax
+<+237>:	jne    0x8048601 <main+269>
+<+239>:	mov    DWORD PTR [esp+0x8],0x0
+<+247>:	mov    DWORD PTR [esp+0x4],0x8048707
+<+255>:	mov    DWORD PTR [esp],0x804870a
+<+262>:	call   0x8048420 <execl@plt>
+<+267>:	jmp    0x8048610 <main+284>
+<+269>:	lea    eax,[esp+0x18]
+<+273>:	add    eax,0x42
+<+276>:	mov    DWORD PTR [esp],eax
+<+279>:	call   0x80483e0 <puts@plt>
+<+284>:	mov    eax,0x0
+<+289>:	lea    esp,[ebp-0x8]
+<+292>:	pop    ebx
+<+293>:	pop    edi
+<+294>:	pop    ebp
+<+295>:	ret

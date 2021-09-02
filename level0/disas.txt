@@ -1,0 +1,50 @@
+Dump of assembler code for function main:
+<+0>:	push   ebp
+<+1>:	mov    ebp,esp
+<+3>:	and    esp,0xfffffff0
+<+6>:	sub    esp,0x20
+<+9>:	mov    eax,DWORD PTR [ebp+0xc]
+<+12>:	add    eax,0x4
+<+15>:	mov    eax,DWORD PTR [eax]
+<+17>:	mov    DWORD PTR [esp],eax
+<+20>:	call   0x8049710 <atoi>
+<+25>:	cmp    eax,0x1a7
+<+30>:	jne    0x8048f58 <main+152>
+<+32>:	mov    DWORD PTR [esp],0x80c5348
+<+39>:	call   0x8050bf0 <strdup>
+<+44>:	mov    DWORD PTR [esp+0x10],eax
+<+48>:	mov    DWORD PTR [esp+0x14],0x0
+<+56>:	call   0x8054680 <getegid>
+<+61>:	mov    DWORD PTR [esp+0x1c],eax
+<+65>:	call   0x8054670 <geteuid>
+<+70>:	mov    DWORD PTR [esp+0x18],eax
+<+74>:	mov    eax,DWORD PTR [esp+0x1c]
+<+78>:	mov    DWORD PTR [esp+0x8],eax
+<+82>:	mov    eax,DWORD PTR [esp+0x1c]
+<+86>:	mov    DWORD PTR [esp+0x4],eax
+<+90>:	mov    eax,DWORD PTR [esp+0x1c]
+<+94>:	mov    DWORD PTR [esp],eax
+<+97>:	call   0x8054700 <setresgid>
+<+102>:	mov    eax,DWORD PTR [esp+0x18]
+<+106>:	mov    DWORD PTR [esp+0x8],eax
+<+110>:	mov    eax,DWORD PTR [esp+0x18]
+<+114>:	mov    DWORD PTR [esp+0x4],eax
+<+118>:	mov    eax,DWORD PTR [esp+0x18]
+<+122>:	mov    DWORD PTR [esp],eax
+<+125>:	call   0x8054690 <setresuid>
+<+130>:	lea    eax,[esp+0x10]
+<+134>:	mov    DWORD PTR [esp+0x4],eax
+<+138>:	mov    DWORD PTR [esp],0x80c5348
+<+145>:	call   0x8054640 <execv>
+<+150>:	jmp    0x8048f80 <main+192>
+<+152>:	mov    eax,ds:0x80ee170
+<+157>:	mov    edx,eax
+<+159>:	mov    eax,0x80c5350
+<+164>:	mov    DWORD PTR [esp+0xc],edx
+<+168>:	mov    DWORD PTR [esp+0x8],0x5
+<+176>:	mov    DWORD PTR [esp+0x4],0x1
+<+184>:	mov    DWORD PTR [esp],eax
+<+187>:	call   0x804a230 <fwrite>
+<+192>:	mov    eax,0x0
+<+197>:	leave
+<+198>:	ret

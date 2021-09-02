@@ -1,0 +1,45 @@
+Dump of assembler code for function m:
+<+0>:	push   ebp
+<+1>:	mov    ebp,esp
+<+3>:	sub    esp,0x18
+<+6>:	mov    DWORD PTR [esp],0x80485d1
+<+13>:	call   0x8048360 <puts@plt>
+<+18>:	leave
+<+19>:	ret
+   
+Dump of assembler code for function n:
+<+0>:	push   ebp
+<+1>:	mov    ebp,esp
+<+3>:	sub    esp,0x18
+<+6>:	mov    DWORD PTR [esp],0x80485b0
+<+13>:	call   0x8048370 <system@plt>
+<+18>:	leave
+<+19>:	ret
+
+Dump of assembler code for function main:
+<+0>:	push   ebp
+<+1>:	mov    ebp,esp
+<+3>:	and    esp,0xfffffff0
+<+6>:	sub    esp,0x20
+<+9>:	mov    DWORD PTR [esp],0x40
+<+16>:	call   0x8048350 <malloc@plt>
+<+21>:	mov    DWORD PTR [esp+0x1c],eax
+<+25>:	mov    DWORD PTR [esp],0x4
+<+32>:	call   0x8048350 <malloc@plt>
+<+37>:	mov    DWORD PTR [esp+0x18],eax
+<+41>:	mov    edx,0x8048468
+<+46>:	mov    eax,DWORD PTR [esp+0x18]
+<+50>:	mov    DWORD PTR [eax],edx
+<+52>:	mov    eax,DWORD PTR [ebp+0xc]
+<+55>:	add    eax,0x4
+<+58>:	mov    eax,DWORD PTR [eax]
+<+60>:	mov    edx,eax
+<+62>:	mov    eax,DWORD PTR [esp+0x1c]
+<+66>:	mov    DWORD PTR [esp+0x4],edx
+<+70>:	mov    DWORD PTR [esp],eax
+<+73>:	call   0x8048340 <strcpy@plt>
+<+78>:	mov    eax,DWORD PTR [esp+0x18]
+<+82>:	mov    eax,DWORD PTR [eax]
+<+84>:	call   eax
+<+86>:	leave
+<+87>:	ret

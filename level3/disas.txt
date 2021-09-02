@@ -1,0 +1,36 @@
+Dump of assembler code for function main:
+<+0>:	push   ebp
+<+1>:	mov    ebp,esp
+<+3>:	and    esp,0xfffffff0
+<+6>:	call   0x80484a4 <v>
+<+11>:	leave
+<+12>:	ret
+
+Dump of assembler code for function v:
+<+0>:	push   ebp
+<+1>:	mov    ebp,esp
+<+3>:	sub    esp,0x218
+<+9>:	mov    eax,ds:0x8049860
+<+14>:	mov    DWORD PTR [esp+0x8],eax
+<+18>:	mov    DWORD PTR [esp+0x4],0x200
+<+26>:	lea    eax,[ebp-0x208]
+<+32>:	mov    DWORD PTR [esp],eax
+<+35>:	call   0x80483a0 <fgets@plt>
+<+40>:	lea    eax,[ebp-0x208]
+<+46>:	mov    DWORD PTR [esp],eax
+<+49>:	call   0x8048390 <printf@plt>
+<+54>:	mov    eax,ds:0x804988c
+<+59>:	cmp    eax,0x40
+<+62>:	jne    0x8048518 <v+116>
+<+64>:	mov    eax,ds:0x8049880
+<+69>:	mov    edx,eax
+<+71>:	mov    eax,0x8048600
+<+76>:	mov    DWORD PTR [esp+0xc],edx
+<+80>:	mov    DWORD PTR [esp+0x8],0xc
+<+88>:	mov    DWORD PTR [esp+0x4],0x1
+<+96>:	mov    DWORD PTR [esp],eax
+<+99>:	call   0x80483b0 <fwrite@plt>
+<+104>:	mov    DWORD PTR [esp],0x804860d
+<+111>:	call   0x80483c0 <system@plt>
+<+116>:	leave
+<+117>:	ret
